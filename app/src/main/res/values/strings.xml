@@ -1,5 +1,29 @@
 <resources>
     <string name="app_name">JohnDeere</string>
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="signUp_string">Registrarse</string>
+    <string name="guest_String">Entrar como invitado</string>
+    <string name="logIn_string">Iniciar sesión</string>
+    <string name="mainPage_bottomNav_string">Main Page</string>
+    <string name="search_bottomNav_string">Search</string>
+    <string name="quizzes_bottomNav_string">Quizzes</string>
+    <string name="profile_bottomNav_string">Profile</string>
+    <string name="technicalLanguage_string">Lenguaje Técnico</string>
+    <string name="generalLanguage_string">Lenguaje General</string>
+    <string name="basic_string">Básico</string>
+    <string name="intermediate_string">Intermedio</string>
+    <string name="advanced_String">Avanzado</string>
+    <string name="quizzesTextView_string">Quizzes</string>
+    <string name="logOut_string">Cerrar sesión</string>
+    <string name="changePass_string">Cambiar contraseña</string>
+    <string name="back_string">Regresar</string>
+    <string name="registeredUser_string">Usuario registrado</string>
+    <string name="createAccount_string">Crear cuenta</string>
+    <string name="search_string">Buscador</string>
+    <string name="categories_string">Categoría x</string>
+    <string name="categoriesLanguage_string">Lenguaje x</string>
+    <string name="quizRoadDifficulty_string">Quizzes - x</string>
+    <string name="level_string">x</string>
+    <string name="quizLevel_string">Quiz x - x</string>
+    <string name="words_string">Palabra x</string>
 </resources>

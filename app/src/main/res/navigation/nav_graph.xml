@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/nav_graph"
+    app:startDestination="@id/homePage_frag">
+
+    <fragment
+        android:id="@+id/homePage_frag"
+        android:name="com.example.johndeere.HomePage"
+        android:label="fragment_home_page"
+        tools:layout="@layout/fragment_home_page" >
+        <action
+            android:id="@+id/action_homePage_frag_to_logIn_frag"
+            app:destination="@id/logIn_frag" />
+        <action
+            android:id="@+id/action_homePage_frag_to_signUp_frag"
+            app:destination="@id/signUp_frag" />
+        <action
+            android:id="@+id/action_homePage_frag_to_mainPage_frag"
+            app:destination="@id/mainPage_frag" />
+    </fragment>
+    <fragment
+        android:id="@+id/categories_frag"
+        android:name="com.example.johndeere.Categories"
+        android:label="fragment_categories"
+        tools:layout="@layout/fragment_categories" >
+        <action
+            android:id="@+id/action_categories_frag_to_words_frag"
+            app:destination="@id/words_frag" />
+    </fragment>
+    <fragment
+        android:id="@+id/changePassword_frag"
+        android:name="com.example.johndeere.ChangePassword"
+        android:label="fragment_change_password"
+        tools:layout="@layout/fragment_change_password" >
+        <action
+            android:id="@+id/action_changePassword_frag_to_profile_frag"
+            app:destination="@id/profile_frag" />
+        <action
+            android:id="@+id/action_changePassword_frag_to_homePage_frag"
+            app:destination="@id/homePage_frag" />
+    </fragment>
+    <fragment
+        android:id="@+id/logIn_frag"
+        android:name="com.example.johndeere.LogIn"
+        android:label="fragment_log_in"
+        tools:layout="@layout/fragment_log_in" >
+        <action
+            android:id="@+id/action_logIn_frag_to_mainPage_frag"
+            app:destination="@id/mainPage_frag" />
+        <action
+            android:id="@+id/action_logIn_frag_to_homePage_frag"
+            app:destination="@id/homePage_frag" />
+    </fragment>
+    <fragment
+        android:id="@+id/mainPage_frag"
+        android:name="com.example.johndeere.MainPage"
+        android:label="fragment_main_page"
+        tools:layout="@layout/fragment_main_page" >
+        <action
+            android:id="@+id/action_mainPage_frag_to_profile_frag"
+            app:destination="@id/profile_frag" />
+        <action
+            android:id="@+id/action_mainPage_frag_to_categories_frag"
+            app:destination="@id/categories_frag" />
+        <action
+            android:id="@+id/action_mainPage_frag_to_search_frag"
+            app:destination="@id/search_frag" />
+        <action
+            android:id="@+id/action_mainPage_frag_to_quizzes_frag"
+            app:destination="@id/quizzes_frag" />
+    </fragment>
+    <fragment
+        android:id="@+id/profile_frag"
+        android:name="com.example.johndeere.Profile"
+        android:label="fragment_profile"
+        tools:layout="@layout/fragment_profile" >
+        <action
+            android:id="@+id/action_profile_frag_to_changePassword_frag"
+            app:destination="@id/changePassword_frag" />
+        <action
+            android:id="@+id/action_profile_frag_to_homePage_frag"
+            app:destination="@id/homePage_frag" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizEndPage_frag"
+        android:name="com.example.johndeere.QuizEndPage"
+        android:label="fragment_quiz_end_page"
+        tools:layout="@layout/fragment_quiz_end_page" />
+    <fragment
+        android:id="@+id/quizPage_frag"
+        android:name="com.example.johndeere.QuizPage"
+        android:label="fragment_quiz_page"
+        tools:layout="@layout/fragment_quiz_page" >
+        <action
+            android:id="@+id/action_quizPage_frag_to_quizEndPage_frag"
+            app:destination="@id/quizEndPage_frag" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizRoad_frag"
+        android:name="com.example.johndeere.QuizRoad"
+        android:label="fragment_quiz_road"
+        tools:layout="@layout/fragment_quiz_road" >
+        <action
+            android:id="@+id/action_quizRoad_frag_to_quizPage_frag"
+            app:destination="@id/quizPage_frag" />
+    </fragment>
+    <fragment
+        android:id="@+id/quizzes_frag"
+        android:name="com.example.johndeere.Quizzes"
+        android:label="fragment_quizzes"
+        tools:layout="@layout/fragment_quizzes" >
+        <action
+            android:id="@+id/action_quizzes_frag_to_quizRoad_frag"
+            app:destination="@id/quizRoad_frag" />
+    </fragment>
+    <fragment
+        android:id="@+id/search_frag"
+        android:name="com.example.johndeere.Search"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" />
+    <fragment
+        android:id="@+id/signUp_frag"
+        android:name="com.example.johndeere.SignUp"
+        android:label="fragment_sign_up"
+        tools:layout="@layout/fragment_sign_up" >
+        <action
+            android:id="@+id/action_signUp_frag_to_logIn_frag"
+            app:destination="@id/logIn_frag" />
+        <action
+            android:id="@+id/action_signUp_frag_to_homePage_frag"
+            app:destination="@id/homePage_frag" />
+    </fragment>
+    <fragment
+        android:id="@+id/video_frag"
+        android:name="com.example.johndeere.Video"
+        android:label="fragment_video"
+        tools:layout="@layout/fragment_video" />
+    <fragment
+        android:id="@+id/words_frag"
+        android:name="com.example.johndeere.Words"
+        android:label="fragment_words"
+        tools:layout="@layout/fragment_words" >
+        <action
+            android:id="@+id/action_words_frag_to_video_frag"
+            app:destination="@id/video_frag" />
+    </fragment>
+</navigation>
