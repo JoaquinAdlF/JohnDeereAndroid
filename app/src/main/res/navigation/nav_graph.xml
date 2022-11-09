@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/categories_frag"
-        android:name="com.example.johndeere.Categories"
+        android:name="com.example.johndeere.CategoriesFragment"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" >
         <action
@@ -119,7 +119,11 @@
         android:id="@+id/search_frag"
         android:name="com.example.johndeere.Search"
         android:label="fragment_search"
-        tools:layout="@layout/fragment_search" />
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_search_frag_to_video_frag"
+            app:destination="@id/video_frag" />
+    </fragment>
     <fragment
         android:id="@+id/signUp_frag"
         android:name="com.example.johndeere.SignUp"
@@ -134,12 +138,12 @@
     </fragment>
     <fragment
         android:id="@+id/video_frag"
-        android:name="com.example.johndeere.Video"
+        android:name="com.example.johndeere.VideoFragment"
         android:label="fragment_video"
         tools:layout="@layout/fragment_video" />
     <fragment
         android:id="@+id/words_frag"
-        android:name="com.example.johndeere.Words"
+        android:name="com.example.johndeere.WordsFragment"
         android:label="fragment_words"
         tools:layout="@layout/fragment_words" >
         <action

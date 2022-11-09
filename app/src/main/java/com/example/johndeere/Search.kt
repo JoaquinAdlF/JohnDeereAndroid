@@ -5,55 +5,93 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import androidx.appcompat.widget.SearchView
+import androidx.databinding.adapters.SearchViewBindingAdapter.OnQueryTextChange
+import androidx.databinding.adapters.SearchViewBindingAdapter.OnQueryTextSubmit
+import androidx.navigation.Navigation
+import androidx.recyclerview.widget.DividerItemDecoration
+import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.recyclerview.widget.RecyclerView
+import com.example.johndeere.databinding.FragmentSearchBinding
+import com.example.johndeere.databinding.FragmentWordsBinding
+import java.util.*
 
-// TODO: Rename parameter arguments, choose names that match
-// the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-private const val ARG_PARAM1 = "param1"
-private const val ARG_PARAM2 = "param2"
-
-/**
- * A simple [Fragment] subclass.
- * Use the [Search.newInstance] factory method to
- * create an instance of this fragment.
- */
 class Search : Fragment() {
-    // TODO: Rename and change types of parameters
-    private var param1: String? = null
-    private var param2: String? = null
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        arguments?.let {
-            param1 = it.getString(ARG_PARAM1)
-            param2 = it.getString(ARG_PARAM2)
-        }
-    }
+    lateinit var searchRV: RecyclerView
+    lateinit var searchRVAdapter: adapterSubCategories
+    lateinit var dataList: ArrayList<Words>
+
+    private var _binding: FragmentSearchBinding ? = null
+    private val binding get() = _binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_search, container, false)
+        _binding = FragmentSearchBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
-    companion object {
-        /**
-         * Use this factory method to create a new instance of
-         * this fragment using the provided parameters.
-         *
-         * @param param1 Parameter 1.
-         * @param param2 Parameter 2.
-         * @return A new instance of fragment Search.
-         */
-        // TODO: Rename and change types and number of parameters
-        @JvmStatic
-        fun newInstance(param1: String, param2: String) =
-            Search().apply {
-                arguments = Bundle().apply {
-                    putString(ARG_PARAM1, param1)
-                    putString(ARG_PARAM2, param2)
-                }
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        searchRV = binding.rvSearch
+        dataList = ArrayList()
+
+        for (category in categoriesList) {
+            for (word in category.subCategory) {
+                dataList.add(word)
             }
+        }
+
+
+
+
+        //searchRVAdapter.notifyDataSetChanged()
+
+        val searchView = binding.searchView
+
+        searchView.setOnQueryTextListener(object: SearchView.OnQueryTextListener,
+            android.widget.SearchView.OnQueryTextListener {
+
+            override fun onQueryTextSubmit(query: String): Boolean {
+                filter(query)
+                return false
+            }
+
+            override fun onQueryTextChange(newText: String): Boolean {
+
+                return false
+            }
+        })
     }
+
+    private fun filter(text: String) {
+        val filteredlist: ArrayList<Words> = ArrayList()
+
+        for (item in dataList) {
+            if (item.name.toLowerCase().contains(text.toLowerCase())) {
+                filteredlist.add(item)
+            }
+        }
+        if (filteredlist.isEmpty()) {
+            Toast.makeText(context, "No hay coincidencias", Toast.LENGTH_SHORT).show()
+        } else {
+            searchRVAdapter = adapterSubCategories(requireActivity(), filteredlist) {
+                val bundle = Bundle()
+                bundle.putParcelable("word", it)
+                view?.let { it1 -> Navigation.findNavController(it1).navigate(R.id.action_search_frag_to_video_frag, bundle) }
+            }
+
+            searchRV.addItemDecoration(DividerItemDecoration(activity, LinearLayoutManager.VERTICAL))
+            searchRV.adapter = searchRVAdapter
+            searchRV.layoutManager = LinearLayoutManager(requireActivity())
+
+
+        }
+    }
+
+
 }
