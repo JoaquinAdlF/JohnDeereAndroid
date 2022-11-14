@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/homePage_frag"
-        android:name="com.example.johndeere.HomePage"
+        android:name="com.example.johndeere.fragments.HomePage"
         android:label="fragment_home_page"
         tools:layout="@layout/fragment_home_page" >
         <action
@@ -22,7 +22,7 @@
     </fragment>
     <fragment
         android:id="@+id/categories_frag"
-        android:name="com.example.johndeere.CategoriesFragment"
+        android:name="com.example.johndeere.fragments.Categories"
         android:label="fragment_categories"
         tools:layout="@layout/fragment_categories" >
         <action
@@ -31,7 +31,7 @@
     </fragment>
     <fragment
         android:id="@+id/changePassword_frag"
-        android:name="com.example.johndeere.ChangePassword"
+        android:name="com.example.johndeere.fragments.ChangePassword"
         android:label="fragment_change_password"
         tools:layout="@layout/fragment_change_password" >
         <action
@@ -43,7 +43,7 @@
     </fragment>
     <fragment
         android:id="@+id/logIn_frag"
-        android:name="com.example.johndeere.LogIn"
+        android:name="com.example.johndeere.fragments.LogIn"
         android:label="fragment_log_in"
         tools:layout="@layout/fragment_log_in" >
         <action
@@ -55,7 +55,7 @@
     </fragment>
     <fragment
         android:id="@+id/mainPage_frag"
-        android:name="com.example.johndeere.MainPage"
+        android:name="com.example.johndeere.fragments.MainPage"
         android:label="fragment_main_page"
         tools:layout="@layout/fragment_main_page" >
         <action
@@ -73,7 +73,7 @@
     </fragment>
     <fragment
         android:id="@+id/profile_frag"
-        android:name="com.example.johndeere.Profile"
+        android:name="com.example.johndeere.fragments.Profile"
         android:label="fragment_profile"
         tools:layout="@layout/fragment_profile" >
         <action
@@ -85,12 +85,12 @@
     </fragment>
     <fragment
         android:id="@+id/quizEndPage_frag"
-        android:name="com.example.johndeere.QuizEndPage"
+        android:name="com.example.johndeere.fragments.QuizEndPage"
         android:label="fragment_quiz_end_page"
         tools:layout="@layout/fragment_quiz_end_page" />
     <fragment
         android:id="@+id/quizPage_frag"
-        android:name="com.example.johndeere.QuizPage"
+        android:name="com.example.johndeere.fragments.QuizPage"
         android:label="fragment_quiz_page"
         tools:layout="@layout/fragment_quiz_page" >
         <action
@@ -99,7 +99,7 @@
     </fragment>
     <fragment
         android:id="@+id/quizRoad_frag"
-        android:name="com.example.johndeere.QuizRoad"
+        android:name="com.example.johndeere.fragments.QuizRoad"
         android:label="fragment_quiz_road"
         tools:layout="@layout/fragment_quiz_road" >
         <action
@@ -108,7 +108,7 @@
     </fragment>
     <fragment
         android:id="@+id/quizzes_frag"
-        android:name="com.example.johndeere.Quizzes"
+        android:name="com.example.johndeere.fragments.Quizzes"
         android:label="fragment_quizzes"
         tools:layout="@layout/fragment_quizzes" >
         <action
@@ -117,7 +117,7 @@
     </fragment>
     <fragment
         android:id="@+id/search_frag"
-        android:name="com.example.johndeere.Search"
+        android:name="com.example.johndeere.fragments.Search"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" >
         <action
@@ -126,7 +126,7 @@
     </fragment>
     <fragment
         android:id="@+id/signUp_frag"
-        android:name="com.example.johndeere.SignUp"
+        android:name="com.example.johndeere.fragments.SignUp"
         android:label="fragment_sign_up"
         tools:layout="@layout/fragment_sign_up" >
         <action
@@ -138,12 +138,12 @@
     </fragment>
     <fragment
         android:id="@+id/video_frag"
-        android:name="com.example.johndeere.VideoFragment"
+        android:name="com.example.johndeere.fragments.Video"
         android:label="fragment_video"
         tools:layout="@layout/fragment_video" />
     <fragment
         android:id="@+id/words_frag"
-        android:name="com.example.johndeere.WordsFragment"
+        android:name="com.example.johndeere.fragments.Words"
         android:label="fragment_words"
         tools:layout="@layout/fragment_words" >
         <action

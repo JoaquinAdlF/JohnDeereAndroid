@@ -4,7 +4,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SignUp">
+    tools:context=".fragments.SignUp">
 
     <TextView
         android:id="@+id/signUp_textView"
@@ -18,13 +18,14 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.120" />
+        app:layout_constraintVertical_bias="0.051" />
 
     <Button
         android:id="@+id/signUp_button"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="375dp"
+        android:layout_marginTop="395dp"
+        android:background="@drawable/button_config"
         android:text="@string/signUp_string"
         app:layout_constraintBottom_toTopOf="@+id/back_button"
         app:layout_constraintEnd_toEndOf="parent"
@@ -33,12 +34,71 @@
 
     <Button
         android:id="@+id/back_button"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="30dp"
+        android:layout_marginTop="40dp"
+        android:background="@drawable/button_config"
         android:text="@string/back_string"
         app:layout_constraintEnd_toEndOf="@+id/signUp_button"
         app:layout_constraintStart_toStartOf="@+id/signUp_button"
         app:layout_constraintTop_toBottomOf="@id/signUp_button" />
+
+    <EditText
+        android:id="@+id/signFirstnameTxt"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="100dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="101dp"
+        android:ems="10"
+        android:hint="Nombre"
+        android:inputType="textPersonName"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/signUp_textView" />
+
+    <EditText
+        android:id="@+id/signLastnameTxt"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Apellido"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/signFirstnameTxt"
+        app:layout_constraintTop_toBottomOf="@+id/signFirstnameTxt" />
+
+    <EditText
+        android:id="@+id/signEmail"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Correo electrónico"
+        android:inputType="textEmailAddress"
+        app:layout_constraintStart_toStartOf="@+id/signLastnameTxt"
+        app:layout_constraintTop_toBottomOf="@+id/signLastnameTxt" />
+
+    <EditText
+        android:id="@+id/signPassword"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Contraseña"
+        android:inputType="textPassword"
+        app:layout_constraintStart_toStartOf="@+id/signEmail"
+        app:layout_constraintTop_toBottomOf="@+id/signEmail" />
+
+    <EditText
+        android:id="@+id/signCompanycode"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:ems="10"
+        android:hint="Clave de empresa"
+        android:inputType="textPersonName"
+        app:layout_constraintStart_toStartOf="@+id/signPassword"
+        app:layout_constraintTop_toBottomOf="@+id/signPassword" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
