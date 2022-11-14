@@ -4,28 +4,182 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Profile">
+    tools:context=".fragments.Profile">
 
-    <Button
-        android:id="@+id/changePass_button"
-        android:layout_width="140dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="175dp"
-        android:text="@string/changePass_string"
-        app:layout_constraintBottom_toTopOf="@+id/logOut_button"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/logOut_button"
-        app:layout_constraintTop_toTopOf="parent" />
+    <androidx.cardview.widget.CardView
+        android:id="@+id/progress"
+        android:layout_width="375dp"
+        android:layout_height="225dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintStart_toStartOf="@+id/personalData"
+        app:layout_constraintTop_toBottomOf="@+id/personalData">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <ProgressBar
+                android:id="@+id/progressBar3"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar2"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/level3Title"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar2" />
+
+            <ProgressBar
+                android:id="@+id/progressBar2"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="@+id/progressBar1"
+                app:layout_constraintHorizontal_bias="1.0"
+                app:layout_constraintStart_toEndOf="@+id/level2Title"
+                app:layout_constraintTop_toBottomOf="@+id/progressBar1" />
+
+            <ProgressBar
+                android:id="@+id/progressBar1"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="84dp"
+                android:layout_marginTop="32dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.0"
+                app:layout_constraintStart_toEndOf="@+id/level1Title"
+                app:layout_constraintTop_toBottomOf="@+id/progressTitle" />
+
+            <TextView
+                android:id="@+id/level3Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Avanzado"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/level2Title"
+                app:layout_constraintTop_toBottomOf="@+id/level2Title" />
+
+            <TextView
+                android:id="@+id/level2Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:text="Intermedio"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/level1Title"
+                app:layout_constraintTop_toBottomOf="@+id/level1Title" />
+
+            <TextView
+                android:id="@+id/level1Title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="24dp"
+                android:text="Básico"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/progressTitle"
+                app:layout_constraintTop_toBottomOf="@+id/progressTitle" />
+
+            <TextView
+                android:id="@+id/progressTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:text="Progreso"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView4"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginTop="72dp"
+                android:src="@drawable/ic_progress"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView>
 
     <Button
         android:id="@+id/logOut_button"
-        android:layout_width="350dp"
+        android:layout_width="300dp"
         android:layout_height="60dp"
-        android:layout_marginTop="275dp"
+        android:layout_marginTop="65dp"
+        android:background="@drawable/button_config"
         android:text="@string/logOut_string"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.495"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/changePass_button" />
+        app:layout_constraintTop_toBottomOf="@+id/progress" />
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/personalData"
+        android:layout_width="375dp"
+        android:layout_height="225dp"
+        android:layout_marginTop="60dp"
+        android:background="@color/primaryColor"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextView
+                android:id="@+id/personalDataTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Datos Personales"
+                android:textColor="#000000"
+                android:textSize="24sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <ImageView
+                android:id="@+id/imageView3"
+                android:layout_width="125dp"
+                android:layout_height="125dp"
+                android:layout_marginTop="68dp"
+                android:layout_marginEnd="16dp"
+                android:src="@drawable/ic_user_profile"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/changePass_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@drawable/button_config"
+                android:text="@string/changePass_string"
+                android:textSize="12sp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintStart_toStartOf="parent" />
+
+            <TextView
+                android:id="@+id/fullnameTxt"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="68dp"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="@+id/changePass_button"
+                app:layout_constraintTop_toTopOf="parent" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </androidx.cardview.widget.CardView><![CDATA[
+
+    />
+
+]]>
 </androidx.constraintlayout.widget.ConstraintLayout>
