@@ -18,19 +18,19 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.1" />
+        app:layout_constraintVertical_bias="0.05" />
 
     <Button
         android:id="@+id/level1_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="115dp"
-        android:text="@string/level_string"
+        android:text="@string/_1"
         android:textColor="#FFFFFF"
-        app:backgroundTint="#9DABFB"
         app:layout_constraintEnd_toStartOf="@+id/level2_button"
-        app:layout_constraintStart_toStartOf="@+id/level3_button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/level2_button"
         tools:ignore="DuplicateSpeakableTextCheck,TextContrastCheck" />
 
@@ -39,10 +39,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="115dp"
-        android:text="@string/level_string"
+        android:layout_marginTop="50dp"
+        android:layout_marginEnd="50dp"
+        android:text="@string/_2"
         android:textColor="#FFFFFF"
-        app:backgroundTint="#9DABFB"
-        app:layout_constraintEnd_toEndOf="@+id/level4_button"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/level3_button"
         app:layout_constraintTop_toBottomOf="@+id/level3_button"
         tools:ignore="TextContrastCheck" />
@@ -51,13 +52,13 @@
         android:id="@+id/level3_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="50dp"
         android:layout_marginTop="50dp"
         android:layout_marginEnd="115dp"
-        android:text="@string/level_string"
+        android:text="@string/_3"
         android:textColor="#FFFFFF"
-        app:backgroundTint="#9DABFB"
         app:layout_constraintEnd_toStartOf="@+id/level4_button"
-        app:layout_constraintStart_toStartOf="@+id/level5_button"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/level4_button"
         tools:ignore="TextContrastCheck" />
 
@@ -67,10 +68,10 @@
         android:layout_height="wrap_content"
         android:layout_marginStart="115dp"
         android:layout_marginTop="50dp"
-        android:text="@string/level_string"
+        android:layout_marginEnd="50dp"
+        android:text="@string/_4"
         android:textColor="#FFFFFF"
-        app:backgroundTint="#9DABFB"
-        app:layout_constraintEnd_toEndOf="@+id/quizRoad_textView"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/level5_button"
         app:layout_constraintTop_toBottomOf="@+id/level5_button"
         tools:ignore="TextContrastCheck" />
@@ -79,13 +80,26 @@
         android:id="@+id/level5_button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="75dp"
-        android:text="@string/level_string"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="100dp"
+        android:text="@string/_5"
         android:textColor="#FFFFFF"
-        app:backgroundTint="#9DABFB"
         app:layout_constraintEnd_toStartOf="@+id/level4_button"
-        app:layout_constraintStart_toStartOf="@+id/quizRoad_textView"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/quizRoad_textView"
         tools:ignore="TextContrastCheck" />
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="590dp"
+        android:layout_marginTop="20dp"
+        android:foregroundGravity="center"
+        android:src="@drawable/quiz_road"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/quizRoad_textView"
+        tools:ignore="ImageContrastCheck"
+        android:contentDescription="@string/app_name" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
