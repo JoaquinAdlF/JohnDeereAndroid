@@ -1,6 +1,5 @@
 <resources>
     <string name="app_name">JohnDeere</string>
-    <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="signUp_string">Registrarse</string>
     <string name="guest_String">Entrar como invitado</string>
     <string name="logIn_string">Iniciar sesión</string>
@@ -22,8 +21,14 @@
     <string name="search_string">Buscador</string>
     <string name="categories_string">Categoría x</string>
     <string name="categoriesLanguage_string">Lenguaje x</string>
-    <string name="quizRoadDifficulty_string">Quizzes - x</string>
-    <string name="level_string">x</string>
-    <string name="quizLevel_string">Quiz x - x</string>
+    <string name="quizRoadDifficulty_string">Dificultad - x</string>
     <string name="words_string">Palabra x</string>
+    <string name="quiz_choice">Choice</string>
+    <string name="countLabel">Pregunta %d</string>
+    <string name="finalScore">Score %d/%d</string>
+    <string name="_5">5</string>
+    <string name="_4">4</string>
+    <string name="_3">3</string>
+    <string name="_2">2</string>
+    <string name="_1">1</string>
 </resources>

@@ -34,16 +34,23 @@ class Quizzes : Fragment() {
         val intermediate = view.findViewById<Button>(R.id.intermediate_button)
         val advanced = view.findViewById<Button>(R.id.advanced_button)
 
+        // Seleccion de la dificultad basica y asignacion en un bundle para generar la configuracion
         basic.setOnClickListener{
-            view.findNavController().navigate(R.id.action_quizzes_frag_to_quizRoad_frag)
+            val bundle = Bundle()
+            bundle.putString("difficulty", "Dificultad básica")
+            view.findNavController().navigate(R.id.action_quizzes_frag_to_quizRoad_frag, bundle)
         }
-
+        // Seleccion de la dificultad intermedia y asignacion en un bundle para generar la configuracion
         intermediate.setOnClickListener{
-            view.findNavController().navigate(R.id.action_quizzes_frag_to_quizRoad_frag)
+            val bundle = Bundle()
+            bundle.putString("difficulty", "Dificultad intermedia")
+            view.findNavController().navigate(R.id.action_quizzes_frag_to_quizRoad_frag, bundle)
         }
-
+        // Seleccion de la dificultad avanzada y asignacion en un bundle para generar la configuracion
         advanced.setOnClickListener{
-            view.findNavController().navigate(R.id.action_quizzes_frag_to_quizRoad_frag)
+            val bundle = Bundle()
+            bundle.putString("difficulty", "Dificultad avanzada")
+            view.findNavController().navigate(R.id.action_quizzes_frag_to_quizRoad_frag, bundle)
         }
     }
 }
