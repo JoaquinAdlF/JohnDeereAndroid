@@ -27,6 +27,35 @@ class Profile : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        val sharedPref = this.requireActivity().getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val username = sharedPref.getString("username", "")
+
+        if (username == "") {
+            binding.fullnameTxt.text = "Invitado"
+            binding.logOutButton.text = "PANTALLA INICIAL"
+            binding.changePassButton.visibility = View.GONE
+            val level1 = sharedPref.getFloat("level1guest", 50f)
+            val level2 = sharedPref.getFloat("level2guest", 50f)
+            val level3 = sharedPref.getFloat("level3guest", 50f)
+            binding.progressBar1.progress = level1.toInt()
+            binding.progressBar2.progress = level2.toInt()
+            binding.progressBar2.progress = level3.toInt()
+        } else {
+            binding.fullnameTxt.text = username
+            binding.logOutButton.text = "CERRAR SESIÓN"
+            binding.changePassButton.visibility = View.VISIBLE
+            val level1 = sharedPref.getFloat("level1", 50f)
+            val level2 = sharedPref.getFloat("level2", 50f)
+            val level3 = sharedPref.getFloat("level3", 50f)
+            binding.progressBar1.progress = level1.toInt()
+            binding.progressBar2.progress = level2.toInt()
+            binding.progressBar2.progress = level3.toInt()
+        }
+
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val changePass = view.findViewById<Button>(R.id.changePass_button)
@@ -35,22 +64,28 @@ class Profile : Fragment() {
         // Recuperación de los datos del usuario previemente obtenidos en el inicio de sesión
         val sharedPref = this.requireActivity().getSharedPreferences("pref", Context.MODE_PRIVATE)
 
-        val firstname = sharedPref.getString("firstname", "")
-        val lastname = sharedPref.getString("lastname", "")
-        val level1 = sharedPref.getFloat("level1", 0f)
-        val level2 = sharedPref.getFloat("level2", 0f)
-        val level3 = sharedPref.getFloat("level3", 0f)
+        val username = sharedPref.getString("username", "")
 
         // Actualización de la información en la interfaz del usuario
-        if (firstname == "") {
+        if (username == "") {
             binding.fullnameTxt.text = "Invitado"
+            binding.logOutButton.text = "PANTALLA INICIAL"
+            binding.changePassButton.visibility = View.GONE
+            val level1 = sharedPref.getFloat("level1guest", 50f)
+            val level2 = sharedPref.getFloat("level2guest", 50f)
+            val level3 = sharedPref.getFloat("level3guest", 50f)
+            binding.progressBar1.progress = level1.toInt()
+            binding.progressBar2.progress = level2.toInt()
+            binding.progressBar2.progress = level3.toInt()
         } else {
-            binding.fullnameTxt.text = firstname + " " + lastname
+            binding.fullnameTxt.text = username
+            val level1 = sharedPref.getFloat("level1", 50f)
+            val level2 = sharedPref.getFloat("level2", 50f)
+            val level3 = sharedPref.getFloat("level3", 50f)
+            binding.progressBar1.progress = level1.toInt()
+            binding.progressBar2.progress = level2.toInt()
+            binding.progressBar2.progress = level3.toInt()
         }
-
-        binding.progressBar1.progress = level1.toInt()
-        binding.progressBar2.progress = level2.toInt()
-        binding.progressBar2.progress = level3.toInt()
 
 
         changePass.setOnClickListener{
@@ -61,12 +96,11 @@ class Profile : Fragment() {
         logOut.setOnClickListener{
 
             with(sharedPref.edit()) {
-                putString("firstname", "")
-                putString("lastname", "")
-                //putFloat("orgid", employee.organizationid!!.toFloat())
-                putFloat("level1", 20f)
-                putFloat("level2", 55f)
-                putFloat("level3", 87f)
+                putString("username", "")
+                putFloat("organizationid", -1f)
+                putFloat("level1", 0f)
+                putFloat("level2", 0f)
+                putFloat("level3", 0f)
                 apply()
             }
 

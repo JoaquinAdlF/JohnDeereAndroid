@@ -1,15 +1,13 @@
 package com.example.johndeere.api
 
-import com.example.johndeere.models.employeeInfo
-import com.example.johndeere.models.insertResponse
-import com.example.johndeere.models.organization
-import com.example.johndeere.models.progress
+import com.example.johndeere.models.*
 import okhttp3.RequestBody
 import okhttp3.ResponseBody
 import retrofit2.Call
 import retrofit2.http.Body
 import retrofit2.http.Headers
 import retrofit2.http.POST
+import retrofit2.http.PUT
 
 /*
 Definición de las rutas con las que la aplicación interactúa con
@@ -32,8 +30,8 @@ interface Api {
     ) : Call<List<organization>>
 
     // Autenticación para el inicio de sesión de usuario
-    @POST("employees/auth")
-    fun authEmployee(
+    @POST("employees/login")
+    fun login(
         @Body employeeData: employeeInfo
     ) : Call<List<employeeInfo>>
 
@@ -42,4 +40,9 @@ interface Api {
     fun createProgress(
         @Body progressData: progress
     ) : Call<insertResponse>
+
+    @PUT("employees/update_password")
+    fun updatePassword(
+        @Body updatePasswordInfo: updatePasswordInfo
+    ) : Call<List<updatePasswordInfo>>
 }

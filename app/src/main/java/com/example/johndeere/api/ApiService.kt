@@ -1,10 +1,7 @@
 package com.example.johndeere.api
 
 import android.util.Log
-import com.example.johndeere.models.employeeInfo
-import com.example.johndeere.models.insertResponse
-import com.example.johndeere.models.organization
-import com.example.johndeere.models.progress
+import com.example.johndeere.models.*
 
 import retrofit2.Call
 import retrofit2.Callback
@@ -57,8 +54,8 @@ object ApiService {
         )
     }
 
-    fun authEmployee(employeeData: employeeInfo, onResult: (List<employeeInfo>?) -> Unit) {
-        retrofit.authEmployee(employeeData).enqueue(
+    fun login(employeeData: employeeInfo, onResult: (List<employeeInfo>?) -> Unit) {
+        retrofit.login(employeeData).enqueue(
             object : Callback<List<employeeInfo>> {
                 override fun onFailure(call: Call<List<employeeInfo>>, t: Throwable) {
                     onResult(null)
@@ -87,6 +84,24 @@ object ApiService {
                 ) {
                     val createdProgress = response.body()
                     onResult(createdProgress)
+                }
+            }
+        )
+    }
+
+    fun updatePassword(employeeData: updatePasswordInfo, onResult: (List<updatePasswordInfo>?) -> Unit) {
+        retrofit.updatePassword(employeeData).enqueue(
+            object : Callback<List<updatePasswordInfo>> {
+                override fun onFailure(call: Call<List<updatePasswordInfo>>, t: Throwable) {
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<List<updatePasswordInfo>>,
+                    response: Response<List<updatePasswordInfo>>
+                ) {
+                    val updateStatus = response.body()
+                    onResult(updateStatus)
                 }
             }
         )

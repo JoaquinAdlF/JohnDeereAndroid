@@ -36,6 +36,11 @@ class adapterSubCategories (var context: Context, var data: List<Words>, private
         }
     }
 
+    fun filterList(filterlist: List<Words>) {
+        data = filterlist
+        notifyDataSetChanged()
+    }
+
     override fun getItemCount(): Int {
         return data.size
     }

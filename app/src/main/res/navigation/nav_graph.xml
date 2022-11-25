@@ -65,11 +65,11 @@
             android:id="@+id/action_mainPage_frag_to_categories_frag"
             app:destination="@id/categories_frag" />
         <action
-            android:id="@+id/action_mainPage_frag_to_search_frag"
-            app:destination="@id/search_frag" />
-        <action
             android:id="@+id/action_mainPage_frag_to_quizzes_frag"
             app:destination="@id/quizzes_frag" />
+        <action
+            android:id="@+id/action_mainPage_frag_to_video_frag"
+            app:destination="@id/video_frag" />
     </fragment>
     <fragment
         android:id="@+id/profile_frag"
@@ -114,15 +114,6 @@
         <action
             android:id="@+id/action_quizzes_frag_to_quizRoad_frag"
             app:destination="@id/quizRoad_frag" />
-    </fragment>
-    <fragment
-        android:id="@+id/search_frag"
-        android:name="com.example.johndeere.fragments.Search"
-        android:label="fragment_search"
-        tools:layout="@layout/fragment_search" >
-        <action
-            android:id="@+id/action_search_frag_to_video_frag"
-            app:destination="@id/video_frag" />
     </fragment>
     <fragment
         android:id="@+id/signUp_frag"

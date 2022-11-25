@@ -34,6 +34,10 @@ class Video : Fragment() {
         val mediaController = MediaController(context)
         mediaController.setAnchorView(binding.videoView)
 
+        binding.playButton.setOnClickListener {
+            binding.videoView.start()
+        }
+
         // Recepción de la palabra cuyo video se va a mostrar
         arguments?.let {
             val word = it.get("word") as Words
@@ -43,13 +47,14 @@ class Video : Fragment() {
             if(video_id != null) {
                 val offlineUrl = Uri.parse("android.resource://${requireContext().packageName}/${video_id}")
                 binding.wordTextView.text = word.name
-                binding.videoView.setMediaController(mediaController)
+                //binding.videoView.setMediaController(mediaController)
                 binding.videoView.setVideoURI(offlineUrl)
                 binding.videoView.requestFocus()
-                binding.videoView.start()
+                //binding.videoView.start()
             }
             else {
                 binding.videoView.isVisible = false
+                binding.playButton.isVisible = false
                 Toast.makeText(context, "Video no disponible", Toast.LENGTH_SHORT).show()
             }
         }
