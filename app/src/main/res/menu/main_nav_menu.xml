@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8"?>
-<menu xmlns:android="http://schemas.android.com/apk/res/android">
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <item
         android:id="@+id/mainPage_bottomNav"
         android:icon="@drawable/ic_baseline_home_24"
-        android:title="Inicio" />
-    <item
-        android:id="@+id/search_bottomNav"
-        android:icon="@drawable/ic_baseline_search_24"
-        android:title="Buscador" />
+        android:title="@string/mainPage_bottomNav_string"
+        app:showAsAction="always" />
     <item
         android:id="@+id/quizPage_bottomNav"
         android:icon="@drawable/ic_baseline_quiz_24"
-        android:title="@string/quizzes_bottomNav_string" />
+        android:title="@string/quizzes_bottomNav_string"
+        app:showAsAction="always" />
     <item
         android:id="@+id/profile_bottomNav"
         android:icon="@drawable/ic_baseline_person_24"
-        android:title="Perfil" />
+        android:title="@string/profile_bottomNav_string"
+        app:showAsAction="always" />
 </menu>

@@ -34,6 +34,7 @@ class Categories : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+
         // Recibe como parámetro el lenguaje seleccionado (general o técnico)
         arguments?.let {
             val language = it.get("language") as String

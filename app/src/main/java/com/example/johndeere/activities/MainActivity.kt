@@ -3,6 +3,7 @@ package com.example.johndeere.activities
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.view.View
+import androidx.core.view.marginBottom
 import androidx.navigation.NavController
 import androidx.navigation.NavDestination
 import androidx.navigation.fragment.NavHostFragment
@@ -19,11 +20,11 @@ class MainActivity : AppCompatActivity() {
     lateinit var navController : NavController
 
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
 
         val navHostFragment = supportFragmentManager.findFragmentById(R.id.fragmentContainerView) as NavHostFragment
         navController = navHostFragment.navController
@@ -32,6 +33,10 @@ class MainActivity : AppCompatActivity() {
         navController.addOnDestinationChangedListener { _, nd: NavDestination, _ ->
             if (nd.id == R.id.homePage_frag || nd.id == R.id.logIn_frag || nd.id == R.id.signUp_frag || nd.id == R.id.changePassword_frag) {
                 binding.bottomNav.visibility = View.GONE
+
+
+
+
             } else {
                 binding.bottomNav.visibility = View.VISIBLE
             }
@@ -42,11 +47,6 @@ class MainActivity : AppCompatActivity() {
             when (it.itemId){
                 R.id.mainPage_bottomNav -> {
                     navController.navigate(R.id.mainPage_frag)
-                    true
-                }
-
-                R.id.search_bottomNav -> {
-                    navController.navigate(R.id.search_frag)
                     true
                 }
 

@@ -1,5 +1,6 @@
 package com.example.johndeere.fragments
 
+import android.content.Context
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -27,11 +28,27 @@ class HomePage : Fragment() {
         return binding.root
     }
 
+    override fun onResume() {
+        super.onResume()
+        val sharedPref = this.requireActivity().getSharedPreferences("pref", Context.MODE_PRIVATE)
+        val username = sharedPref.getString("username", "")
+        if (username != "") {
+            view?.findNavController()?.navigate(R.id.action_homePage_frag_to_mainPage_frag)
+        }
+    }
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val logIn = view.findViewById<Button>(R.id.logIn_button)
         val signUp = view.findViewById<Button>(R.id.signUp_button)
         val guest = view.findViewById<Button>(R.id.guest_button)
+
+        val sharedPref = this.requireActivity().getSharedPreferences("pref", Context.MODE_PRIVATE)
+
+        val username = sharedPref.getString("username", "")
+        if (username != "") {
+            view.findNavController().navigate(R.id.action_homePage_frag_to_mainPage_frag)
+        }
 
         logIn.setOnClickListener{
             view.findNavController().navigate(R.id.action_homePage_frag_to_logIn_frag)
