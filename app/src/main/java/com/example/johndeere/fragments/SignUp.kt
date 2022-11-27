@@ -10,7 +10,6 @@ import android.util.Patterns
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.core.content.ContextCompat.getSystemService
 import androidx.fragment.app.Fragment
 import androidx.navigation.findNavController
 import com.example.johndeere.R
@@ -152,7 +151,7 @@ class SignUp : Fragment() {
             message = ""
         )
 
-        ApiService.addEmployee(employeeData) {
+        ApiService.addEmployee(employeeData) { it ->
             if (it == null) {
                 AlertDialog.Builder(context)
                     .setTitle("Error de conectividad")
@@ -163,7 +162,7 @@ class SignUp : Fragment() {
                     .show()
             }
             else {
-                if (it?.message == "Company not found") {
+                if (it.message == "Company not found") {
                     AlertDialog.Builder(context)
                         .setTitle("Empresa no encontrada")
                         .setPositiveButton("Ok") { _, _ ->
@@ -171,7 +170,7 @@ class SignUp : Fragment() {
                             binding.signpbarContainer.visibility = View.GONE
                         }
                         .show()
-                } else if (it?.message == "User already exists") {
+                } else if (it.message == "User already exists") {
                     AlertDialog.Builder(context)
                         .setTitle("Nombre de usuario no disponible")
                         .setPositiveButton("Ok") { _, _ ->
@@ -179,8 +178,8 @@ class SignUp : Fragment() {
                             binding.signpbarContainer.visibility = View.GONE
                         }
                         .show()
-                } else if (it?.insertId != -1) {
-                    val employeeid = it?.insertId
+                } else if (it.insertId != -1) {
+                    val employeeid = it.insertId
                     val employeeProgress = progress(
                         id = 0,
                         level1 = 0,
@@ -193,8 +192,8 @@ class SignUp : Fragment() {
                             AlertDialog.Builder(context)
                                 .setTitle("Usuario registrado")
                                 .setPositiveButton("Ok") { _, _ ->
-                                    view?.findNavController()
-                                        ?.navigate(R.id.action_signUp_frag_to_homePage_frag)
+                                    view?.findNavController()?.popBackStack(R.id.signUp_frag, true)
+                                    view?.findNavController()?.navigate(R.id.action_signUp_frag_to_homePage_frag)
                                 }
                                 .show()
                         } else {

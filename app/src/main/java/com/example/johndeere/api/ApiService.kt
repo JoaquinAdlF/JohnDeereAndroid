@@ -106,4 +106,56 @@ object ApiService {
             }
         )
     }
+
+    fun authEmployee(employeeData: employeeInfo, onResult: (List<employeeInfo>?) -> Unit) {
+        retrofit.authEmployee(employeeData).enqueue(
+            object : Callback<List<employeeInfo>> {
+                override fun onFailure(call: Call<List<employeeInfo>>, t: Throwable) {
+                    onResult(null)
+                }
+
+                override fun onResponse(
+                    call: Call<List<employeeInfo>>,
+                    response: Response<List<employeeInfo>>
+                ) {
+                    val employee = response.body()
+                    onResult(employee)
+                }
+            }
+        )
+    }
+
+    fun updateProgress(progressData: progress, onResult: (insertResponse?) -> Unit) {
+        retrofit.updateProgress(progressData).enqueue(
+            object : Callback<insertResponse> {
+                override fun onFailure(call: Call<insertResponse>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse(
+                    call: Call<insertResponse>,
+                    response: Response<insertResponse>
+                ) {
+                    val updateStatus = response.body()
+                    onResult(updateStatus)
+                }
+            }
+        )
+    }
+
+    fun getProgress(id: Int, onResult: (Array<progress>?) -> Unit){
+        retrofit.getProgress(id).enqueue(
+            object : Callback<Array<progress>>{
+                override fun onFailure(call: Call<Array<progress>>, t: Throwable) {
+                    onResult(null)
+                }
+                override fun onResponse(
+                    call: Call<Array<progress>>,
+                    response: Response<Array<progress>>
+                ) {
+                    val progressData = response.body()
+                    onResult(progressData)
+                }
+            }
+        )
+    }
 }

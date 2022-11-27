@@ -1,13 +1,8 @@
 package com.example.johndeere.api
 
 import com.example.johndeere.models.*
-import okhttp3.RequestBody
-import okhttp3.ResponseBody
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.Headers
-import retrofit2.http.POST
-import retrofit2.http.PUT
+import retrofit2.http.*
 
 /*
 Definición de las rutas con las que la aplicación interactúa con
@@ -15,7 +10,6 @@ el API del proyecto
  */
 
 interface Api {
-
     // Registro de un empleado
     @Headers("Content-Type: application/json")
     @POST("employees/add")
@@ -41,8 +35,27 @@ interface Api {
         @Body progressData: progress
     ) : Call<insertResponse>
 
+    // Autenticación para el inicio de sesión de usuario
+    @POST("employees/auth")
+    fun authEmployee(
+        @Body employeeData: employeeInfo
+    ) : Call<List<employeeInfo>>
+
+    // Cambio de password para los empleados
     @PUT("employees/update_password")
     fun updatePassword(
         @Body updatePasswordInfo: updatePasswordInfo
     ) : Call<List<updatePasswordInfo>>
+
+    // Actualización de los datos del progreso de un empleado
+    @PUT("progress/update")
+    fun updateProgress(
+        @Body progressData: progress
+    ) : Call<insertResponse>
+
+    // Recolección de los datos del progreso de un empleado
+    @GET("progress/{employeeid}")
+    fun getProgress(
+        @Path("employeeid") id: Int
+    ) : Call<Array<progress>>
 }

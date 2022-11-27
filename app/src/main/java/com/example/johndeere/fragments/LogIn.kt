@@ -104,8 +104,7 @@ class LogIn : Fragment() {
         }
     }
 
-    private fun invalidForm()
-    {
+    private fun invalidForm() {
         var message = ""
         if (binding.loginusernameContainer.helperText != null)
             message += "\n\nNombre de usuario: " + binding.loginusernameContainer.helperText
@@ -122,8 +121,7 @@ class LogIn : Fragment() {
             .show()
     }
 
-    private fun sendForm()
-    {
+    private fun sendForm() {
         val employeeData = employeeInfo (
             id = 0,
             username = binding.loginusernameEditText.text.toString(),
@@ -158,9 +156,9 @@ class LogIn : Fragment() {
                     .show()
             }
             else if (it?.get(0)?.id!! > 0) {
-                savePreferences(it[0]!!)
+                savePreferences(it[0])
                 AlertDialog.Builder(context)
-                    .setTitle("Bienvenido(a) " + it?.get(0)?.username)
+                    .setTitle("Bienvenido(a) " + it.get(0).username)
                     .setPositiveButton("Ok") { _,_ ->
                         view?.findNavController()?.navigate(R.id.action_logIn_frag_to_mainPage_frag)
                     }
@@ -214,7 +212,7 @@ class LogIn : Fragment() {
         with(preferences.edit()) {
             putFloat("id", employeeInfos.id!!.toFloat())
             putString("username", employeeInfos.username!!.toString())
-            putFloat("organizationid", employeeInfos.organizationid!!.toFloat())
+            //putFloat("organizationid", employeeInfos.organizationid!!.toFloat())
             putFloat("level1", employeeInfos.level1!!.toFloat())
             putFloat("level2", employeeInfos.level2!!.toFloat())
             putFloat("level3", employeeInfos.level3!!.toFloat())
