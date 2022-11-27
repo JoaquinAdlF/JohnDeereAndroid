@@ -1,24 +1,31 @@
 package com.example.johndeere.fragments
 
+import android.R
+import android.annotation.SuppressLint
+import android.app.AlertDialog
+import android.content.Context
+import android.net.ConnectivityManager
+import android.net.NetworkCapabilities
+import android.os.Build
 import android.os.Bundle
 import android.view.LayoutInflater
-import android.view.MenuItem
 import android.view.View
 import android.view.ViewGroup
 import androidx.appcompat.widget.SearchView
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.FragmentTransaction
 import androidx.navigation.Navigation
 import androidx.navigation.findNavController
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.johndeere.GeneralCategoriesList
-import com.example.johndeere.R
 import com.example.johndeere.Words
 import com.example.johndeere.adapters.adapterSubCategories
+import com.example.johndeere.api.ApiService
 import com.example.johndeere.databinding.FragmentMainPageBinding
 import com.example.johndeere.storage.TechnicalCategoriesList
-import com.google.android.material.bottomnavigation.BottomNavigationView
 
 
 /*
@@ -55,6 +62,9 @@ class MainPage : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        // Limpiar las preferences, eliminar/comentar despues de hacer pruebas
+        //context?.getSharedPreferences("Dificultad básica", Context.MODE_PRIVATE)?.edit()?.clear()?.apply()
+        //context?.getSharedPreferences("pref", Context.MODE_PRIVATE)?.edit()?.clear()?.apply()
 
         searchRV = binding.rvSearch
         dataList = ArrayList()
@@ -82,7 +92,7 @@ class MainPage : Fragment() {
         searchRVAdapter = adapterSubCategories(requireActivity(), dataList) {
             val bundle = Bundle()
             bundle.putParcelable("word", it)
-            view?.let { it1 -> Navigation.findNavController(it1).navigate(com.example.johndeere.R.id.action_mainPage_frag_to_video_frag, bundle) }
+            view.let { it1 -> Navigation.findNavController(it1).navigate(com.example.johndeere.R.id.action_mainPage_frag_to_video_frag, bundle) }
         }
         searchRV.addItemDecoration(DividerItemDecoration(activity, LinearLayoutManager.VERTICAL))
         searchRV.adapter = searchRVAdapter
@@ -124,6 +134,8 @@ class MainPage : Fragment() {
             bundle.putString("language", "Lenguaje Técnico")
             view.findNavController().navigate(com.example.johndeere.R.id.action_mainPage_frag_to_categories_frag,bundle)
         }
+
+        getUserProgress()
     }
 
     // Filtrado de la base de datos de palabras de la aplicación a partir
@@ -157,6 +169,53 @@ class MainPage : Fragment() {
         }
 
         searchRVAdapter.filterList(filteredlist)
+    }
 
+    // Metodo para recuperar el progreso del empleado almacenado en la base de datos
+    @SuppressLint("CommitPrefEdits")
+    private fun getUserProgress(){
+        val sharedPrefProfile = activity?.getSharedPreferences("pref",Context.MODE_PRIVATE)
+        val editor = sharedPrefProfile?.edit()
+        val getId = sharedPrefProfile?.getFloat("id", 0f)
+        val id = getId?.toInt()
+
+        if (sharedPrefProfile?.getString("username","") != ""){
+            if (checkForInternet(this.requireActivity())) {
+                if (id != null) {
+                    ApiService.getProgress(id){
+                        editor?.putFloat("id", it?.get(0)?.id!!.toFloat())
+                        editor?.putFloat("level1", it?.get(0)?.level1!!.toFloat())
+                        editor?.putFloat("level2", it?.get(0)?.level2!!.toFloat())
+                        editor?.putFloat("level3", it?.get(0)?.level3!!.toFloat())
+                    }
+                }
+            } else {
+                AlertDialog.Builder(context)
+                    .setTitle("No hay conexión a internet, no se pudo recuperar el progreso")
+                    .setPositiveButton("Ok") { _, _ ->
+                    }
+                    .show()
+            }
+        }
+    }
+
+    // Metodo para verificar si hay conexion a internet
+    private fun checkForInternet(context: Context): Boolean {
+        val connectivityManager = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            val network = connectivityManager.activeNetwork ?: return false
+            val activeNetwork = connectivityManager.getNetworkCapabilities(network) ?: return false
+
+            return when {
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_WIFI) -> true
+                activeNetwork.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR) -> true
+                else -> false
+            }
+        } else {
+            @Suppress("DEPRECATION") val networkInfo =
+                connectivityManager.activeNetworkInfo ?: return false
+            @Suppress("DEPRECATION")
+            return networkInfo.isConnected
+        }
     }
 }

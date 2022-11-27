@@ -7,6 +7,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import androidx.fragment.app.FragmentManager
+import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.example.johndeere.R
 import com.example.johndeere.databinding.FragmentProfileBinding
@@ -36,9 +38,9 @@ class Profile : Fragment() {
             binding.fullnameTxt.text = "Invitado"
             binding.logOutButton.text = "PANTALLA INICIAL"
             binding.changePassButton.visibility = View.GONE
-            val level1 = sharedPref.getFloat("level1guest", 50f)
-            val level2 = sharedPref.getFloat("level2guest", 50f)
-            val level3 = sharedPref.getFloat("level3guest", 50f)
+            val level1 = sharedPref.getFloat("level1guest", 0f)
+            val level2 = sharedPref.getFloat("level2guest", 0f)
+            val level3 = sharedPref.getFloat("level3guest", 0f)
             binding.progressBar1.progress = level1.toInt()
             binding.progressBar2.progress = level2.toInt()
             binding.progressBar2.progress = level3.toInt()
@@ -46,9 +48,9 @@ class Profile : Fragment() {
             binding.fullnameTxt.text = username
             binding.logOutButton.text = "CERRAR SESIÓN"
             binding.changePassButton.visibility = View.VISIBLE
-            val level1 = sharedPref.getFloat("level1", 50f)
-            val level2 = sharedPref.getFloat("level2", 50f)
-            val level3 = sharedPref.getFloat("level3", 50f)
+            val level1 = sharedPref.getFloat("level1", 0f)
+            val level2 = sharedPref.getFloat("level2", 0f)
+            val level3 = sharedPref.getFloat("level3", 0f)
             binding.progressBar1.progress = level1.toInt()
             binding.progressBar2.progress = level2.toInt()
             binding.progressBar2.progress = level3.toInt()
@@ -71,17 +73,17 @@ class Profile : Fragment() {
             binding.fullnameTxt.text = "Invitado"
             binding.logOutButton.text = "PANTALLA INICIAL"
             binding.changePassButton.visibility = View.GONE
-            val level1 = sharedPref.getFloat("level1guest", 50f)
-            val level2 = sharedPref.getFloat("level2guest", 50f)
-            val level3 = sharedPref.getFloat("level3guest", 50f)
+            val level1 = sharedPref.getFloat("level1guest", 0f)
+            val level2 = sharedPref.getFloat("level2guest", 0f)
+            val level3 = sharedPref.getFloat("level3guest", 0f)
             binding.progressBar1.progress = level1.toInt()
             binding.progressBar2.progress = level2.toInt()
             binding.progressBar2.progress = level3.toInt()
         } else {
             binding.fullnameTxt.text = username
-            val level1 = sharedPref.getFloat("level1", 50f)
-            val level2 = sharedPref.getFloat("level2", 50f)
-            val level3 = sharedPref.getFloat("level3", 50f)
+            val level1 = sharedPref.getFloat("level1", 0f)
+            val level2 = sharedPref.getFloat("level2", 0f)
+            val level3 = sharedPref.getFloat("level3", 0f)
             binding.progressBar1.progress = level1.toInt()
             binding.progressBar2.progress = level2.toInt()
             binding.progressBar2.progress = level3.toInt()

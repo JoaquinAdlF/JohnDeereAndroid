@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.FragmentManager
 import androidx.navigation.findNavController
 import com.example.johndeere.R
 import com.example.johndeere.databinding.FragmentHomePageBinding
@@ -39,6 +40,7 @@ class HomePage : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
         val logIn = view.findViewById<Button>(R.id.logIn_button)
         val signUp = view.findViewById<Button>(R.id.signUp_button)
         val guest = view.findViewById<Button>(R.id.guest_button)
