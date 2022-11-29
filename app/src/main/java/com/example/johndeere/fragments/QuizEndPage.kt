@@ -48,10 +48,10 @@ class QuizEndPage : Fragment() {
 
         // Recibe como parámetro la cantidad total de preguntas y el puntaje obtenido para desplegar en pantalla
         arguments?.let {
-            score = it.get("correct") as Int
-            totalQuestions = it.get("questions") as Int
-            difficulty = it.get("difficulty") as String
-            level = it.get("level") as Int
+            score = it.getInt("correct")
+            totalQuestions = it.getInt("questions")
+            difficulty = it.getString("difficulty") as String
+            level = it.getInt("level")
             binding.quizEndPageTextView.text = getString(R.string.finalScore, score, totalQuestions)
         }
 
@@ -66,14 +66,16 @@ class QuizEndPage : Fragment() {
                 isGuest = "guest"
             }
 
-            if (difficulty == "Dificultad básica") {
-                difficultyLevel = "level1$isGuest"
-            }
-            else if (difficulty == "Dificultad intermedia") {
-                difficultyLevel = "level2$isGuest"
-            }
-            else if (difficulty == "Dificultad avanzada") {
+            when (difficulty) {
+                "Dificultad básica" -> {
+                    difficultyLevel = "level1$isGuest"
+                }
+                "Dificultad intermedia" -> {
+                    difficultyLevel = "level2$isGuest"
+                }
+                "Dificultad avanzada" -> {
                     difficultyLevel = "level3$isGuest"
+                }
             }
 
             val progress = sharedPrefProfile?.getFloat(difficultyLevel, 0f)

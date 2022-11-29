@@ -33,7 +33,7 @@ class Words : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
         // Recepción de la categoría cuyas palabras se van a mostrar
-        arguments?.let {
+        arguments?.let { it ->
             val category = it.get("category") as Categories
 
             // Creación del adaptador para la alimentación del RecyclerView de palabras

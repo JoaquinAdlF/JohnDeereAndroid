@@ -8,7 +8,6 @@ import android.view.ViewGroup
 import androidx.navigation.Navigation
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.johndeere.Categories
 import com.example.johndeere.GeneralCategoriesList
 import com.example.johndeere.R
 import com.example.johndeere.adapters.adapterCategories
@@ -34,10 +33,9 @@ class Categories : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
         // Recibe como parámetro el lenguaje seleccionado (general o técnico)
-        arguments?.let {
-            val language = it.get("language") as String
+        arguments?.let { it ->
+            val language = it.getString("language") as String
 
             // Si el lenguaje es general, se llama al adaptador con el archivo GeneralCategoriesList
             if (language == "Lenguaje General") {

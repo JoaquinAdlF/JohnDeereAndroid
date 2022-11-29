@@ -23,7 +23,7 @@ class Video : Fragment() {
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
-    ): View? {
+    ): View {
         _binding = FragmentVideoBinding.inflate(inflater, container, false)
         return binding.root
     }
@@ -41,11 +41,11 @@ class Video : Fragment() {
         // Recepción de la palabra cuyo video se va a mostrar
         arguments?.let {
             val word = it.get("word") as Words
-            val video_id = word.localVideoURL
+            val videoId = word.localVideoURL
 
             // El video se reproduce si este existe
-            if(video_id != null) {
-                val offlineUrl = Uri.parse("android.resource://${requireContext().packageName}/${video_id}")
+            if(videoId != null) {
+                val offlineUrl = Uri.parse("android.resource://${requireContext().packageName}/${videoId}")
                 binding.wordTextView.text = word.name
                 //binding.videoView.setMediaController(mediaController)
                 binding.videoView.setVideoURI(offlineUrl)
