@@ -73,10 +73,10 @@ class QuizPage : Fragment() {
 
         // Asignacion de los valores del bundle enviado del fragmento anterior
         arguments?.let {
-            maxQuestionCount = it.get("questions") as Int
-            difficulty = it.get("difficulty") as String
+            maxQuestionCount = it.getInt("questions")
+            difficulty = it.getString("difficulty") as String
             quizData = it.getParcelableArrayList("words")!!
-            level = it.get("level") as Int
+            level = it.getInt("level")
         }
 
         // Llamado a la funcion para revisar la respuesta al hacer click en los botones

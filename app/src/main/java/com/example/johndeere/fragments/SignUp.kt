@@ -192,7 +192,6 @@ class SignUp : Fragment() {
                             AlertDialog.Builder(context)
                                 .setTitle("Usuario registrado")
                                 .setPositiveButton("Ok") { _, _ ->
-                                    view?.findNavController()?.popBackStack(R.id.signUp_frag, true)
                                     view?.findNavController()?.navigate(R.id.action_signUp_frag_to_homePage_frag)
                                 }
                                 .show()

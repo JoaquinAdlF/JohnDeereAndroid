@@ -1,5 +1,6 @@
 package com.example.johndeere.fragments
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
@@ -7,8 +8,6 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
-import androidx.fragment.app.FragmentManager
-import androidx.navigation.NavOptions
 import androidx.navigation.findNavController
 import com.example.johndeere.R
 import com.example.johndeere.databinding.FragmentProfileBinding
@@ -29,6 +28,7 @@ class Profile : Fragment() {
         return binding.root
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onResume() {
         super.onResume()
         val sharedPref = this.requireActivity().getSharedPreferences("pref", Context.MODE_PRIVATE)
@@ -58,6 +58,7 @@ class Profile : Fragment() {
 
     }
 
+    @SuppressLint("SetTextI18n")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         val changePass = view.findViewById<Button>(R.id.changePass_button)
@@ -78,7 +79,7 @@ class Profile : Fragment() {
             val level3 = sharedPref.getFloat("level3guest", 0f)
             binding.progressBar1.progress = level1.toInt()
             binding.progressBar2.progress = level2.toInt()
-            binding.progressBar2.progress = level3.toInt()
+            binding.progressBar3.progress = level3.toInt()
         } else {
             binding.fullnameTxt.text = username
             val level1 = sharedPref.getFloat("level1", 0f)
@@ -86,7 +87,7 @@ class Profile : Fragment() {
             val level3 = sharedPref.getFloat("level3", 0f)
             binding.progressBar1.progress = level1.toInt()
             binding.progressBar2.progress = level2.toInt()
-            binding.progressBar2.progress = level3.toInt()
+            binding.progressBar3.progress = level3.toInt()
         }
 
 

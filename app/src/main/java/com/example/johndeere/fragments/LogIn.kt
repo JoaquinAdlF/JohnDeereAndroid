@@ -158,7 +158,7 @@ class LogIn : Fragment() {
             else if (it?.get(0)?.id!! > 0) {
                 savePreferences(it[0])
                 AlertDialog.Builder(context)
-                    .setTitle("Bienvenido(a) " + it.get(0).username)
+                    .setTitle("Bienvenido(a) " + it[0].username)
                     .setPositiveButton("Ok") { _,_ ->
                         view?.findNavController()?.navigate(R.id.action_logIn_frag_to_mainPage_frag)
                     }
